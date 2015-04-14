@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OperationsCreateDlg" widgetVar="OperationsCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateOperationsTitle}">
+            <h:form id="OperationsCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{operationsController.selected != null}">
+                      
+                        <p:outputLabel value="#{bundle.CreateOperationsLabel_date}" for="date" />
+                        <p:calendar id="date" pattern="MM/dd/yyyy" value="#{operationsController.selected.date}" title="#{bundle.EditOperationsTitle_date}" required="true" requiredMessage="#{bundle.EditOperationsRequiredMessage_date}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateOperationsLabel_amount}" for="amount" />
+                        <p:inputText id="amount" value="#{operationsController.selected.amount}" title="#{bundle.CreateOperationsTitle_amount}" required="true" requiredMessage="#{bundle.CreateOperationsRequiredMessage_amount}"/>
+                        <p:outputLabel value="users" for="userId" />
+                        <p:selectOneMenu id="userId" value="#{operationsController.selected.userId}" required="true" requiredMessage="#{bundle.EditOperationsRequiredMessage_userId}">
+                            <f:selectItems value="#{usersController.itemsAvailableSelectOne}"
+                                           var="userIdItem"
+                                           itemValue="#{userIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="category" for="categoryId" />
+                        <p:selectOneMenu id="categoryId" value="#{operationsController.selected.categoryId}" required="true" requiredMessage="#{bundle.EditOperationsRequiredMessage_categoryId}">
+                            <f:selectItems value="#{categoriesController.itemsAvailableSelectOne}"
+                                           var="categoryIdItem"
+                                           itemValue="#{categoryIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{operationsController.create}" value="#{bundle.Save}" update="display,:OperationsListForm:datalist,:growl" oncomplete="handleSubmit(args,'OperationsCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OperationsCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
