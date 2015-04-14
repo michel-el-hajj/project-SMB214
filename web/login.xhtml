@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+
+
+    <style type="text/css" >
+*					{ margin: 0; padding: 0; }
+body				{ font-family: Georgia, serif; background: url(login.jpg) top center no-repeat !important;   }
+
+.clear				{ clear: both; }
+
+form				{ width: 406px; margin: 91px auto 0; }
+
+.labels				{ width: 115px; text-align: right; float: left; margin: 0 10px 0 0; padding: 9px 0 0 0; font-size: 16px; }
+
+input				{ width: 220px; padding: 4px; margin: 0 0 10px 0; font-size: 18px;
+					  color: #3a3a3a; font-family: Georgia, serif;}
+					  
+.enter				{ background: url(../web/button-bg_active.png) repeat-x top center; border: 1px solid #999;
+					  -moz-border-radius: 5px; padding: 5px; color: black; font-weight: bold;
+					  -webkit-border-radius: 5px; font-size: 13px;  width: 70px; }
+button:hover		{ background: white; color: black; }
+    </style>
+    <h:body>
+ <div class="login" > 
+        <form action="j_security_check" method="POST" id="loginForm">                          
+            <table border="0" align="right">
+                <tbody>
+                    <tr>
+                        <td class="labels" slign="right">UserName: &nbsp;</td>
+                        <td><input type="text" name="j_username" /></td>
+                    </tr>
+                    <tr>
+                        <td class="labels" slign="right">Password: &nbsp;</td>
+                        <td><input type="password" name="j_password" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        
+                        <td><input type="submit" class="enter" style="margin: 0px 0px 0 140px; background-color: orange;" value="Login" /></td>
+                    </tr>
+                </tbody>
+            </table>
+                    </form>
+             </div>
+    </h:body>
+</html>
